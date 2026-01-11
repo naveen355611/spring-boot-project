@@ -1,0 +1,22 @@
+stages:
+  - build
+  - run
+
+
+build_job:
+  stage: build
+  image: gradle:8.2-jdk17
+  script:
+    - ./gradlew clean bootJar
+  rules:
+    - when: always
+
+run_job:
+  stage: run
+  image: eclipse-temurin:17
+  dependencies:
+    - build_job            # get artifacts from build
+  script:
+    - java -jar build\libs\demo-0.0.1-SNAPSHOT.jar
+  rules:
+    - when: always
