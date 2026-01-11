@@ -2,12 +2,14 @@ stages:
   - build
   - run
 
-
 build_job:
   stage: build
   image: gradle:8.2-jdk17
   script:
     - ./gradlew clean bootJar
+  artifacts:
+    paths:
+      - build/libs/*.jar
   rules:
     - when: always
 
@@ -17,6 +19,9 @@ run_job:
   dependencies:
     - build_job            # get artifacts from build
   script:
-    - java -jar build\libs\demo-0.0.1-SNAPSHOT.jar
+    - java -jar build/libs/demo-0.0.1-SNAPSHOT.jar &
+    - sleep 10
+    - curl http://localhost:8080/hello
+  timeout: 3m
   rules:
     - when: always
