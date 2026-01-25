@@ -12,4 +12,4 @@ server:
 
 openai:
   #this api-key has to be same as secret key in https://platform.openai.com/api-keys
-  api-key: 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
+  api-key: sk-proj-MyDummyKey

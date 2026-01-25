@@ -6,4 +6,4 @@ postman request POST 'https://localhost:8080/llm/ask' \
   "prompt": "Write an email to your manager to get an approval for his expense report"
 }
 ' \
-  --auth-bearer-token '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'
+  --auth-bearer-token 'sk-proj-MyDummyKey'
