@@ -4,7 +4,7 @@ stages:
 
 build_job:
   stage: build
-  image: gradle:8.2-jdk17
+  image: gradle:8.2-jdk21
   script:
     - ./gradlew clean bootJar
   artifacts:
@@ -15,7 +15,7 @@ build_job:
 
 run_job:
   stage: run
-  image: eclipse-temurin:17
+  image: eclipse-temurin:21
   dependencies:
     - build_job            # get artifacts from build
   script:
